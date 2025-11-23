@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title"
+    content="In Search of Goodness: Large Scale Benchmarking of Goodness Functions for the Forward-Forward Algorithm">
+  <meta name="description"
+    content="Benchmarking 21 goodness functions for the Forward-Forward algorithm across MNIST, FashionMNIST, CIFAR-10, and STL-10.">
+  <meta name="keywords"
+    content="Forward-Forward Algorithm, Deep Learning, Goodness Functions, Biologically Plausible Learning, Neural Networks, Green AI">
+  <meta name="author" content="Arya Shah, Vaibhav Tripathi">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Indian Institute of Technology Gandhinagar">
+  <meta property="og:title"
+    content="In Search of Goodness: Large Scale Benchmarking of Goodness Functions for the Forward-Forward Algorithm">
+  <meta property="og:description"
+    content="Benchmarking 21 goodness functions for the Forward-Forward algorithm across MNIST, FashionMNIST, CIFAR-10, and STL-10.">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="In Search of Goodness - Research Preview">
+  <meta property="article:published_time" content="2025-01-01T00:00:00.000Z">
+  <meta property="article:author" content="Arya Shah">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="Forward-Forward Algorithm">
+  <meta property="article:tag" content="Deep Learning">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@aryashah2k">
+  <meta name="twitter:creator" content="@aryashah2k">
+  <meta name="twitter:title"
+    content="In Search of Goodness: Large Scale Benchmarking of Goodness Functions for the Forward-Forward Algorithm">
+  <meta name="twitter:description"
+    content="Benchmarking 21 goodness functions for the Forward-Forward algorithm across MNIST, FashionMNIST, CIFAR-10, and STL-10.">
+  <meta name="twitter:image:alt" content="In Search of Goodness - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title"
+    content="In Search of Goodness: Large Scale Benchmarking of Goodness Functions for the Forward-Forward Algorithm">
+  <meta name="citation_author" content="Shah, Arya">
+  <meta name="citation_author" content="Tripathi, Vaibhav">
+  <meta name="citation_publication_date" content="2025">
+  <meta name="citation_conference_title" content="Academic Research">
+
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <title>In Search of Goodness: Large Scale Benchmarking of Goodness Functions - Arya Shah, Vaibhav Tripathi | Academic
+    Research</title>
+
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+</head>
+
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">In Search of Goodness: Large Scale Benchmarking of Goodness
+                Functions for the Forward-Forward Algorithm</h1>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a href="#" target="_blank">Arya Shah</a>,</span>
+                <span class="author-block">
+                  <a href="#" target="_blank">Vaibhav Tripathi</a>
+                </span>
+              </div>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">Indian Institute of Technology Gandhinagar<br>Academic Research 2025</span>
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+
+                  <!-- Code Link -->
+                  <span class="link-block">
+                    <a href="https://github.com/aryashah2k/In-Search-of-Goodness" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+
+                  <!-- arXiv Link -->
+                  <span class="link-block">
+                    <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Teaser -->
+    <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="static/images/cover.png" alt="Project Cover"
+              style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          </div>
+          <h2 class="subtitle has-text-centered" style="margin-top: 1.5rem;">
+            Benchmarking 21 distinct goodness functions across four standard image datasets to evaluate classification
+            accuracy, energy consumption, and carbon footprint for the Forward-Forward algorithm.
+          </h2>
+        </div>
+      </div>
+    </section>
+    <!-- End teaser -->
+
+    <!-- Paper abstract -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                The Forward-Forward (FF) algorithm offers a biologically plausible alternative to backpropagation,
+                enabling neural networks to learn through local updates. However, FF's efficacy relies heavily on the
+                definition of "goodness", which is a scalar measure of neural activity. While current implementations
+                predominantly utilize a simple sum-of-squares metric, it remains unclear if this default choice is
+                optimal. To address this, we benchmarked 21 distinct goodness functions across four standard image
+                datasets (MNIST, FashionMNIST, CIFAR-10, STL-10), evaluating classification accuracy, energy
+                consumption, and carbon footprint. We found that certain alternative goodness functions inspired from
+                various domains significantly outperform the standard baseline. Specifically,
+                <code>game_theoretic_local</code> achieved 97.15% accuracy on MNIST,
+                <code>softmax_energy_margin_local</code> reached 82.84% on FashionMNIST, and
+                <code>triplet_margin_local</code> attained 37.69% on STL-10. Furthermore, we observed substantial
+                variability in computational efficiency, highlighting a critical trade-off between predictive
+                performance and environmental cost. These findings demonstrate that the goodness function is a pivotal
+                hyperparameter in FF design.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End paper abstract -->
+
+
+    <!-- Image carousel -->
+    <!-- <section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        <img src="static/images/carousel1.jpg" alt="Cross-species representational alignment visualization" loading="lazy"/>
+        <h2 class="subtitle has-text-centered">
+          Layer-wise alignment analysis across CNNs, Vision Transformers, and self-supervised models showing DINO ViT-B/16 achieving the highest cross-species alignment.
+        </h2>
+      </div>
+      <div class="item">
+        <img src="static/images/carousel2.jpg" alt="Biologically informed cat vision filter" loading="lazy"/>
+        <h2 class="subtitle has-text-centered">
+          Biologically informed cat-vision filter modeling spectral sensitivity, spatial acuity, vertical-slit pupil optics, and temporal processing differences.
+        </h2>
+      </div>
+      <div class="item">
+        <img src="static/images/carousel3.jpg" alt="Model family comparison" loading="lazy"/>
+        <h2 class="subtitle has-text-centered">
+         Comparison of CNN, supervised Transformer, and self-supervised Transformer families showing distinct alignment patterns across architectures.
+       </h2>
+     </div>
+     <div class="item">
+      <img src="static/images/carousel4.jpg" alt="Representational geometry analysis" loading="lazy"/>
+      <h2 class="subtitle has-text-centered">
+        t-SNE and UMAP embeddings revealing domain overlap patterns and geometric correspondence between human and feline representations.
+      </h2>
+    </div>
+  </div>
+</div>
+</div>
+</section> -->
+    <!-- End image carousel -->
+
+
+    <!-- Methodology Section -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full">
+            <h2 class="title is-3">Methodology</h2>
+            <div class="content has-text-justified">
+              <p>
+                In this study, we systematically benchmark 21 distinct goodness functions for the Forward-Forward (FF)
+                algorithm. The FF algorithm replaces the global backward pass of backpropagation with two local forward
+                passes, maximizing "goodness" for positive data and minimizing it for negative data.
+              </p>
+
+              <h3 class="title is-4">The Forward-Forward Algorithm</h3>
+              <p>
+                For each layer, the objective is to have high "goodness" for positive data (real samples) and low
+                "goodness" for negative data (corrupted or generated samples). The local loss function is defined as:
+              </p>
+              <div style="text-align: center; margin: 1rem 0;">
+                <p><em>L = log(1 + exp(-(G(y_pos) - θ))) + log(1 + exp(G(y_neg) - θ))</em></p>
+              </div>
+              <p>
+                where <em>G(y)</em> is the goodness function, and <em>θ</em> is a threshold.
+              </p>
+
+              <h3 class="title is-4">Goodness Functions Evaluated</h3>
+              <p>
+                We categorize the 21 goodness functions into five groups:
+              </p>
+              <ul style="text-align: left; margin-left: 2rem;">
+                <li><strong>Baseline:</strong> Sum of Squares.</li>
+                <li><strong>Distance and Energy-Based:</strong> L2 Normalized Energy, Huber Norm, Triplet Margin,
+                  Tempered Energy, Outlier Trimmed Energy, Softmax Energy Margin.</li>
+                <li><strong>Biologically Inspired:</strong> Hebbian, Oja's Rule, BCM Theory.</li>
+                <li><strong>Information Theoretic:</strong> InfoNCE, Predictive Coding, NT-Xent.</li>
+                <li><strong>Statistical and Other Approaches:</strong> Decorrelation, Game Theoretic, Fractal Dimension,
+                  Whitened Energy, PCA Energy, Gaussian Energy, Sparse L1, Attention Weighted.</li>
+              </ul>
+
+              <div class="has-text-centered" style="margin: 2rem 0;">
+                <img src="static/images/ff_goodness_overview.png" alt="Forward-Forward Goodness Overview"
+                  style="max-width: 100%; height: auto;" loading="lazy" />
+                <p class="image-caption" style="margin-top: 0.5rem; font-size: 0.9rem; color: #666;">
+                  <strong>Figure:</strong> Overview of the Forward-Forward algorithm and the diverse goodness functions
+                  evaluated in this study.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Methodology Section -->
+
+
+
+    <!-- Results Section -->
+    <section class="section hero">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full">
+            <h2 class="title is-3">Results</h2>
+            <div class="content has-text-justified">
+              <p>
+                We evaluated the performance of the 21 goodness functions across four datasets: MNIST, FashionMNIST,
+                CIFAR-10, and STL-10. We report Classification Accuracy (linear classifier on frozen embeddings),
+                Multi-pass Accuracy (native FF inference), and Environmental Impact (Emissions and Energy).
+              </p>
+
+              <!-- MNIST Results -->
+              <h3 class="title is-4">1. MNIST</h3>
+              <p>
+                On MNIST, <code>game_theoretic_local</code> achieved the highest Multi-pass Accuracy of
+                <strong>98.17%</strong>. The baseline <code>sum_of_squares</code> was the most energy-efficient.
+              </p>
+              <div class="has-text-centered" style="margin: 1rem 0;">
+                <img src="static/images/mnist_bars.png" alt="MNIST Results Bar Chart"
+                  style="max-width: 80%; height: auto;" loading="lazy" />
+              </div>
+              <div class="table-container"
+                style="margin: 1rem 0; overflow-x: auto; max-height: 500px; overflow-y: auto;">
+                <table class="table is-striped is-hoverable" style="margin: 0 auto; width: 100%; font-size: 0.9rem;">
+                  <thead>
+                    <tr>
+                      <th>Goodness Function</th>
+                      <th>Class. Acc.</th>
+                      <th>Multi-pass Acc.</th>
+                      <th>Emissions (g CO2)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>attention_weighted_local</td>
+                      <td>0.9737</td>
+                      <td>0.9803</td>
+                      <td>13.14</td>
+                    </tr>
+                    <tr>
+                      <td>bcm_local</td>
+                      <td>0.0986</td>
+                      <td>0.0979</td>
+                      <td>12.56</td>
+                    </tr>
+                    <tr>
+                      <td>decorrelation_local</td>
+                      <td>0.9738</td>
+                      <td>0.9795</td>
+                      <td>12.84</td>
+                    </tr>
+                    <tr>
+                      <td>fractal_dimension_local</td>
+                      <td>0.9676</td>
+                      <td>0.9803</td>
+                      <td>12.62</td>
+                    </tr>
+                    <tr>
+                      <td><strong>game_theoretic_local</strong></td>
+                      <td>0.9715</td>
+                      <td><strong>0.9817</strong></td>
+                      <td>12.78</td>
+                    </tr>
+                    <tr>
+                      <td>gaussian_energy_local</td>
+                      <td>0.9690</td>
+                      <td>0.9805</td>
+                      <td>13.11</td>
+                    </tr>
+                    <tr>
+                      <td>hebbian_local</td>
+                      <td>0.9690</td>
+                      <td>0.9805</td>
+                      <td>13.44</td>
+                    </tr>
+                    <tr>
+                      <td>huber_norm_local</td>
+                      <td>0.9696</td>
+                      <td>0.9815</td>
+                      <td>12.93</td>
+                    </tr>
+                    <tr>
+                      <td>info_nce_local</td>
+                      <td>0.9564</td>
+                      <td>0.9799</td>
+                      <td>13.47</td>
+                    </tr>
+                    <tr>
+                      <td>l2_normalized_energy_local</td>
+                      <td>0.9690</td>
+                      <td>0.9805</td>
+                      <td>13.04</td>
+                    </tr>
+                    <tr>
+                      <td>nt_xent_local</td>
+                      <td>0.9564</td>
+                      <td>0.9799</td>
+                      <td>12.92</td>
+                    </tr>
+                    <tr>
+                      <td>oja_local</td>
+                      <td>0.9056</td>
+                      <td>0.9740</td>
+                      <td>13.55</td>
+                    </tr>
+                    <tr>
+                      <td>outlier_trimmed_energy_local</td>
+                      <td>0.3645</td>
+                      <td>0.4055</td>
+                      <td>13.20</td>
+                    </tr>
+                    <tr>
+                      <td>pca_energy_local</td>
+                      <td>0.9690</td>
+                      <td>0.9805</td>
+                      <td>13.52</td>
+                    </tr>
+                    <tr>
+                      <td>predictive_coding_local</td>
+                      <td>0.9788</td>
+                      <td>0.9803</td>
+                      <td>13.19</td>
+                    </tr>
+                    <tr>
+                      <td>softmax_energy_margin_local</td>
+                      <td>0.9568</td>
+                      <td>0.9791</td>
+                      <td>13.60</td>
+                    </tr>
+                    <tr>
+                      <td>sparse_l1_local</td>
+                      <td>0.9719</td>
+                      <td>0.9811</td>
+                      <td>13.64</td>
+                    </tr>
+                    <tr>
+                      <td>sum_of_squares (baseline)</td>
+                      <td>0.9690</td>
+                      <td>0.9805</td>
+                      <td><strong>12.32</strong></td>
+                    </tr>
+                    <tr>
+                      <td>tempered_energy_local</td>
+                      <td>0.9690</td>
+                      <td>0.9805</td>
+                      <td>13.27</td>
+                    </tr>
+                    <tr>
+                      <td>triplet_margin_local</td>
+                      <td>0.9750</td>
+                      <td>0.9806</td>
+                      <td>13.28</td>
+                    </tr>
+                    <tr>
+                      <td>whitened_energy_local</td>
+                      <td>0.9690</td>
+                      <td>0.9805</td>
+                      <td>13.06</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- FashionMNIST Results -->
+              <h3 class="title is-4">2. FashionMNIST</h3>
+              <p>
+                For FashionMNIST, <code>softmax_energy_margin_local</code> achieved the highest Multi-pass Accuracy of
+                <strong>86.32%</strong>. <code>whitened_energy_local</code> was the most efficient.
+              </p>
+              <div class="has-text-centered" style="margin: 1rem 0;">
+                <img src="static/images/fashionmnist_bars.png" alt="FashionMNIST Results Bar Chart"
+                  style="max-width: 80%; height: auto;" loading="lazy" />
+              </div>
+              <div class="table-container"
+                style="margin: 1rem 0; overflow-x: auto; max-height: 500px; overflow-y: auto;">
+                <table class="table is-striped is-hoverable" style="margin: 0 auto; width: 100%; font-size: 0.9rem;">
+                  <thead>
+                    <tr>
+                      <th>Goodness Function</th>
+                      <th>Class. Acc.</th>
+                      <th>Multi-pass Acc.</th>
+                      <th>Emissions (g CO2)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>attention_weighted_local</td>
+                      <td>0.8338</td>
+                      <td>0.8594</td>
+                      <td>12.52</td>
+                    </tr>
+                    <tr>
+                      <td>bcm_local</td>
+                      <td>0.1023</td>
+                      <td>0.1000</td>
+                      <td>12.91</td>
+                    </tr>
+                    <tr>
+                      <td>decorrelation_local</td>
+                      <td>0.8243</td>
+                      <td>0.8556</td>
+                      <td>12.76</td>
+                    </tr>
+                    <tr>
+                      <td>fractal_dimension_local</td>
+                      <td>0.8449</td>
+                      <td>0.8540</td>
+                      <td>12.56</td>
+                    </tr>
+                    <tr>
+                      <td>game_theoretic_local</td>
+                      <td>0.8323</td>
+                      <td>0.8586</td>
+                      <td>12.92</td>
+                    </tr>
+                    <tr>
+                      <td>gaussian_energy_local</td>
+                      <td>0.8246</td>
+                      <td>0.8487</td>
+                      <td>12.71</td>
+                    </tr>
+                    <tr>
+                      <td>hebbian_local</td>
+                      <td>0.8246</td>
+                      <td>0.8487</td>
+                      <td>13.33</td>
+                    </tr>
+                    <tr>
+                      <td>huber_norm_local</td>
+                      <td>0.8341</td>
+                      <td>0.8573</td>
+                      <td>12.49</td>
+                    </tr>
+                    <tr>
+                      <td>info_nce_local</td>
+                      <td>0.7860</td>
+                      <td>0.8471</td>
+                      <td>12.69</td>
+                    </tr>
+                    <tr>
+                      <td>l2_normalized_energy_local</td>
+                      <td>0.8246</td>
+                      <td>0.8487</td>
+                      <td>12.90</td>
+                    </tr>
+                    <tr>
+                      <td>nt_xent_local</td>
+                      <td>0.7860</td>
+                      <td>0.8471</td>
+                      <td>12.55</td>
+                    </tr>
+                    <tr>
+                      <td>oja_local</td>
+                      <td>0.1337</td>
+                      <td>0.8059</td>
+                      <td>13.31</td>
+                    </tr>
+                    <tr>
+                      <td>outlier_trimmed_energy_local</td>
+                      <td>0.3155</td>
+                      <td>0.1678</td>
+                      <td>12.85</td>
+                    </tr>
+                    <tr>
+                      <td>pca_energy_local</td>
+                      <td>0.8246</td>
+                      <td>0.8487</td>
+                      <td>13.39</td>
+                    </tr>
+                    <tr>
+                      <td>predictive_coding_local</td>
+                      <td>0.8539</td>
+                      <td>0.8625</td>
+                      <td>12.91</td>
+                    </tr>
+                    <tr>
+                      <td><strong>softmax_energy_margin_local</strong></td>
+                      <td>0.8284</td>
+                      <td><strong>0.8632</strong></td>
+                      <td>12.97</td>
+                    </tr>
+                    <tr>
+                      <td>sparse_l1_local</td>
+                      <td>0.8209</td>
+                      <td>0.8536</td>
+                      <td>13.17</td>
+                    </tr>
+                    <tr>
+                      <td>sum_of_squares (baseline)</td>
+                      <td>0.8246</td>
+                      <td>0.8487</td>
+                      <td>13.12</td>
+                    </tr>
+                    <tr>
+                      <td>tempered_energy_local</td>
+                      <td>0.8246</td>
+                      <td>0.8487</td>
+                      <td>13.27</td>
+                    </tr>
+                    <tr>
+                      <td>triplet_margin_local</td>
+                      <td>0.7887</td>
+                      <td>0.8585</td>
+                      <td>13.03</td>
+                    </tr>
+                    <tr>
+                      <td>whitened_energy_local</td>
+                      <td>0.8246</td>
+                      <td>0.8487</td>
+                      <td><strong>11.91</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- CIFAR-10 Results -->
+              <h3 class="title is-4">3. CIFAR-10</h3>
+              <p>
+                On CIFAR-10, <code>sparse_l1_local</code> achieved the highest Multi-pass Accuracy of
+                <strong>43.82%</strong> and was also the most efficient, highlighting the importance of sparsity.
+              </p>
+              <div class="has-text-centered" style="margin: 1rem 0;">
+                <img src="static/images/cifar10_bars.png" alt="CIFAR-10 Results Bar Chart"
+                  style="max-width: 80%; height: auto;" loading="lazy" />
+              </div>
+              <div class="table-container"
+                style="margin: 1rem 0; overflow-x: auto; max-height: 500px; overflow-y: auto;">
+                <table class="table is-striped is-hoverable" style="margin: 0 auto; width: 100%; font-size: 0.9rem;">
+                  <thead>
+                    <tr>
+                      <th>Goodness Function</th>
+                      <th>Class. Acc.</th>
+                      <th>Multi-pass Acc.</th>
+                      <th>Emissions (g CO2)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>attention_weighted_local</td>
+                      <td>0.2173</td>
+                      <td>0.3980</td>
+                      <td>14.66</td>
+                    </tr>
+                    <tr>
+                      <td>bcm_local</td>
+                      <td>0.2608</td>
+                      <td>0.3521</td>
+                      <td>14.51</td>
+                    </tr>
+                    <tr>
+                      <td>decorrelation_local</td>
+                      <td>0.2309</td>
+                      <td>0.4146</td>
+                      <td>14.44</td>
+                    </tr>
+                    <tr>
+                      <td>fractal_dimension_local</td>
+                      <td>0.2617</td>
+                      <td>0.4235</td>
+                      <td>14.50</td>
+                    </tr>
+                    <tr>
+                      <td>game_theoretic_local</td>
+                      <td>0.2347</td>
+                      <td>0.4305</td>
+                      <td>14.31</td>
+                    </tr>
+                    <tr>
+                      <td>gaussian_energy_local</td>
+                      <td>0.2857</td>
+                      <td>0.3959</td>
+                      <td>13.91</td>
+                    </tr>
+                    <tr>
+                      <td>hebbian_local</td>
+                      <td>0.2857</td>
+                      <td>0.3959</td>
+                      <td>14.63</td>
+                    </tr>
+                    <tr>
+                      <td>huber_norm_local</td>
+                      <td>0.2363</td>
+                      <td>0.3976</td>
+                      <td>14.52</td>
+                    </tr>
+                    <tr>
+                      <td>info_nce_local</td>
+                      <td>0.2560</td>
+                      <td>0.3867</td>
+                      <td>15.22</td>
+                    </tr>
+                    <tr>
+                      <td>l2_normalized_energy_local</td>
+                      <td>0.2857</td>
+                      <td>0.3959</td>
+                      <td>14.57</td>
+                    </tr>
+                    <tr>
+                      <td>nt_xent_local</td>
+                      <td>0.2560</td>
+                      <td>0.3867</td>
+                      <td>14.29</td>
+                    </tr>
+                    <tr>
+                      <td>oja_local</td>
+                      <td>0.1753</td>
+                      <td>0.1618</td>
+                      <td>14.50</td>
+                    </tr>
+                    <tr>
+                      <td>outlier_trimmed_energy_local</td>
+                      <td>0.3747</td>
+                      <td>0.1000</td>
+                      <td>14.41</td>
+                    </tr>
+                    <tr>
+                      <td>pca_energy_local</td>
+                      <td>0.2857</td>
+                      <td>0.3959</td>
+                      <td>14.17</td>
+                    </tr>
+                    <tr>
+                      <td>predictive_coding_local</td>
+                      <td>0.4452</td>
+                      <td>0.4342</td>
+                      <td>14.29</td>
+                    </tr>
+                    <tr>
+                      <td>softmax_energy_margin_local</td>
+                      <td>0.2523</td>
+                      <td>0.3869</td>
+                      <td>14.16</td>
+                    </tr>
+                    <tr>
+                      <td><strong>sparse_l1_local</strong></td>
+                      <td>0.2733</td>
+                      <td><strong>0.4382</strong></td>
+                      <td><strong>14.02</strong></td>
+                    </tr>
+                    <tr>
+                      <td>sum_of_squares (baseline)</td>
+                      <td>0.2857</td>
+                      <td>0.3959</td>
+                      <td>14.99</td>
+                    </tr>
+                    <tr>
+                      <td>tempered_energy_local</td>
+                      <td>0.2857</td>
+                      <td>0.3959</td>
+                      <td>14.71</td>
+                    </tr>
+                    <tr>
+                      <td>triplet_margin_local</td>
+                      <td>0.2516</td>
+                      <td>0.4101</td>
+                      <td>15.62</td>
+                    </tr>
+                    <tr>
+                      <td>whitened_energy_local</td>
+                      <td>0.2857</td>
+                      <td>0.3959</td>
+                      <td>15.11</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- STL-10 Results -->
+              <h3 class="title is-4">4. STL-10</h3>
+              <p>
+                For STL-10, <code>triplet_margin_local</code> achieved the highest Multi-pass Accuracy of
+                <strong>37.72%</strong>, suggesting that explicit separation is crucial for data-scarce tasks.
+              </p>
+              <div class="has-text-centered" style="margin: 1rem 0;">
+                <img src="static/images/stl10_bars.png" alt="STL-10 Results Bar Chart"
+                  style="max-width: 80%; height: auto;" loading="lazy" />
+              </div>
+              <div class="table-container"
+                style="margin: 1rem 0; overflow-x: auto; max-height: 500px; overflow-y: auto;">
+                <table class="table is-striped is-hoverable" style="margin: 0 auto; width: 100%; font-size: 0.9rem;">
+                  <thead>
+                    <tr>
+                      <th>Goodness Function</th>
+                      <th>Class. Acc.</th>
+                      <th>Multi-pass Acc.</th>
+                      <th>Emissions (g CO2)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>attention_weighted_local</td>
+                      <td>0.3647</td>
+                      <td>0.3647</td>
+                      <td>6.45</td>
+                    </tr>
+                    <tr>
+                      <td>bcm_local</td>
+                      <td>0.2132</td>
+                      <td>0.1447</td>
+                      <td><strong>6.18</strong></td>
+                    </tr>
+                    <tr>
+                      <td>decorrelation_local</td>
+                      <td>0.3649</td>
+                      <td>0.3689</td>
+                      <td>6.46</td>
+                    </tr>
+                    <tr>
+                      <td>fractal_dimension_local</td>
+                      <td>0.3554</td>
+                      <td>0.3614</td>
+                      <td>6.33</td>
+                    </tr>
+                    <tr>
+                      <td>game_theoretic_local</td>
+                      <td>0.3770</td>
+                      <td>0.3561</td>
+                      <td>6.72</td>
+                    </tr>
+                    <tr>
+                      <td>gaussian_energy_local</td>
+                      <td>0.3655</td>
+                      <td>0.3664</td>
+                      <td>6.75</td>
+                    </tr>
+                    <tr>
+                      <td>hebbian_local</td>
+                      <td>0.3655</td>
+                      <td>0.3664</td>
+                      <td>6.56</td>
+                    </tr>
+                    <tr>
+                      <td>huber_norm_local</td>
+                      <td>0.3699</td>
+                      <td>0.3479</td>
+                      <td>6.68</td>
+                    </tr>
+                    <tr>
+                      <td>info_nce_local</td>
+                      <td>0.3494</td>
+                      <td>0.3354</td>
+                      <td>6.61</td>
+                    </tr>
+                    <tr>
+                      <td>l2_normalized_energy_local</td>
+                      <td>0.3655</td>
+                      <td>0.3664</td>
+                      <td>6.44</td>
+                    </tr>
+                    <tr>
+                      <td>nt_xent_local</td>
+                      <td>0.3494</td>
+                      <td>0.3354</td>
+                      <td>6.33</td>
+                    </tr>
+                    <tr>
+                      <td>oja_local</td>
+                      <td>0.3632</td>
+                      <td>0.1096</td>
+                      <td>6.41</td>
+                    </tr>
+                    <tr>
+                      <td>outlier_trimmed_energy_local</td>
+                      <td>0.2764</td>
+                      <td>0.1004</td>
+                      <td>6.77</td>
+                    </tr>
+                    <tr>
+                      <td>pca_energy_local</td>
+                      <td>0.3655</td>
+                      <td>0.3664</td>
+                      <td>6.56</td>
+                    </tr>
+                    <tr>
+                      <td>predictive_coding_local</td>
+                      <td>0.4152</td>
+                      <td>0.3607</td>
+                      <td>6.73</td>
+                    </tr>
+                    <tr>
+                      <td>softmax_energy_margin_local</td>
+                      <td>0.3475</td>
+                      <td>0.3231</td>
+                      <td>6.66</td>
+                    </tr>
+                    <tr>
+                      <td>sparse_l1_local</td>
+                      <td>0.3581</td>
+                      <td>0.3657</td>
+                      <td>6.44</td>
+                    </tr>
+                    <tr>
+                      <td>sum_of_squares (baseline)</td>
+                      <td>0.3655</td>
+                      <td>0.3664</td>
+                      <td>10.16</td>
+                    </tr>
+                    <tr>
+                      <td>tempered_energy_local</td>
+                      <td>0.3655</td>
+                      <td>0.3664</td>
+                      <td>6.22</td>
+                    </tr>
+                    <tr>
+                      <td><strong>triplet_margin_local</strong></td>
+                      <td>0.3769</td>
+                      <td><strong>0.3772</strong></td>
+                      <td>6.46</td>
+                    </tr>
+                    <tr>
+                      <td>whitened_energy_local</td>
+                      <td>0.3655</td>
+                      <td>0.3664</td>
+                      <td>6.55</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Results Section -->
+
+
+    <!-- Plots Carousels -->
+    <section class="hero is-small is-light">
+      <div class="hero-body">
+        <div class="container">
+
+          <!-- Carousel 1: Classification Loss -->
+          <h2 class="title is-3 has-text-centered">Classification Loss Plots</h2>
+          <div id="loss-carousel" class="carousel results-carousel">
+            <div class="item">
+              <img src="static/images/mnist_loss.png" alt="MNIST Loss" loading="lazy" />
+              <h3 class="subtitle has-text-centered">MNIST Classification Loss</h3>
+            </div>
+            <div class="item">
+              <img src="static/images/fashionmnist_loss.png" alt="FashionMNIST Loss" loading="lazy" />
+              <h3 class="subtitle has-text-centered">FashionMNIST Classification Loss</h3>
+            </div>
+            <div class="item">
+              <img src="static/images/cifar10_loss.png" alt="CIFAR-10 Loss" loading="lazy" />
+              <h3 class="subtitle has-text-centered">CIFAR-10 Classification Loss</h3>
+            </div>
+            <div class="item">
+              <img src="static/images/stl10_loss.png" alt="STL-10 Loss" loading="lazy" />
+              <h3 class="subtitle has-text-centered">STL-10 Classification Loss</h3>
+            </div>
+          </div>
+
+          <!-- Carousel 2: Accuracy Per Layer -->
+          <h2 class="title is-3 has-text-centered" style="margin-top: 3rem;">Accuracy Per Layer</h2>
+          <div id="acc-layer-carousel" class="carousel results-carousel">
+            <div class="item">
+              <img src="static/images/mnist_acc_layer.png" alt="MNIST Accuracy Per Layer" loading="lazy" />
+              <h3 class="subtitle has-text-centered">MNIST Accuracy Per Layer</h3>
+            </div>
+            <div class="item">
+              <img src="static/images/fashionmnist_acc_layer.png" alt="FashionMNIST Accuracy Per Layer"
+                loading="lazy" />
+              <h3 class="subtitle has-text-centered">FashionMNIST Accuracy Per Layer</h3>
+            </div>
+            <div class="item">
+              <img src="static/images/cifar10_acc_layer.png" alt="CIFAR-10 Accuracy Per Layer" loading="lazy" />
+              <h3 class="subtitle has-text-centered">CIFAR-10 Accuracy Per Layer</h3>
+            </div>
+            <div class="item">
+              <img src="static/images/stl10_acc_layer.png" alt="STL-10 Accuracy Per Layer" loading="lazy" />
+              <h3 class="subtitle has-text-centered">STL-10 Accuracy Per Layer</h3>
+            </div>
+          </div>
+
+          <!-- Carousel 3: Multi-pass Accuracy -->
+          <h2 class="title is-3 has-text-centered" style="margin-top: 3rem;">Multi-pass Accuracy</h2>
+          <div id="multipass-carousel" class="carousel results-carousel">
+            <div class="item">
+              <img src="static/images/mnist_multipass.png" alt="MNIST Multi-pass Accuracy" loading="lazy" />
+              <h3 class="subtitle has-text-centered">MNIST Multi-pass Accuracy</h3>
+            </div>
+            <div class="item">
+              <img src="static/images/fashionmnist_multipass.png" alt="FashionMNIST Multi-pass Accuracy"
+                loading="lazy" />
+              <h3 class="subtitle has-text-centered">FashionMNIST Multi-pass Accuracy</h3>
+            </div>
+            <div class="item">
+              <img src="static/images/cifar10_multipass.png" alt="CIFAR-10 Multi-pass Accuracy" loading="lazy" />
+              <h3 class="subtitle has-text-centered">CIFAR-10 Multi-pass Accuracy</h3>
+            </div>
+            <div class="item">
+              <img src="static/images/stl10_multipass.png" alt="STL-10 Multi-pass Accuracy" loading="lazy" />
+              <h3 class="subtitle has-text-centered">STL-10 Multi-pass Accuracy</h3>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- End Plots Carousels -->
+
+
+
+
+    <!--BibTex citation -->
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title">BibTeX</h2>
+          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+            <i class="fas fa-copy"></i>
+            <span class="copy-text">Copy</span>
+          </button>
+        </div>
+        <pre id="bibtex-code"><code>@misc{shah2025searchgoodness,
+      title={In Search of Goodness: Large Scale Benchmarking of Goodness Functions for the Forward-Forward Algorithm}, 
+      author={Arya Shah and Vaibhav Tripathi},
+      year={2025},
+      eprint={placeholder},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={placeholder}, 
+}</code></pre>
+      </div>
+    </section>
+    <!--End BibTex citation -->
+
+
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+
+              <p>
+                This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                  target="_blank">Academic Project Page Template</a> which was adopted from the <a
+                  href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+                You are free to borrow the source code of this website, we just ask that you link back to this page in
+                the footer. <br> This website is licensed under a <a rel="license"
+                  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                  Commons Attribution-ShareAlike 4.0 International License</a>.
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Statcounter tracking code -->
+
+    <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+</body>
+
+</html>
