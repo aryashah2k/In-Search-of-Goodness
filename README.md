@@ -6,7 +6,7 @@ Authors: <a href="aryashah.me">Arya Shah</a> and <a href="https://iitgn.ac.in/fa
 
 Arxiv Link: TBA
 
-Paper Page: <a href="https://aryashah.me/In-Search-of-Goodness"In Search Of Goodness> Click Here</a>
+Paper Page: <a href="https://aryashah.me/In-Search-of-Goodness">Click Here</a>
 
 If you use the code or research done in this repository, please CITE us!
 
