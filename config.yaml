@@ -1,0 +1,37 @@
+seed: 42
+device: "cuda"  # cpu or cuda
+
+input:
+  path: datasets  # Directory where datasets will be downloaded/stored
+  batch_size: 100
+  dataset: "mnist"  # Options: "mnist", "fashionmnist", "cifar10", "stl10"
+
+
+model:
+  peer_normalization: 0.03
+  momentum: 0.9  # Momentum to use for the running mean in peer normalization loss.
+
+  hidden_dim: 2000
+  num_layers: 4
+  
+  goodness_function: "sum_of_squares"  # Options: sum_of_squares, sparse_l1_local, hebbian_local, info_nce_local, etc.
+  # Optional parameters for specific goodness functions can be added under 'params'
+
+
+training:
+  epochs: 20
+
+  learning_rate: 1e-3
+  weight_decay: 3e-4
+  momentum: 0.9
+
+  downstream_learning_rate: 1e-2
+  downstream_weight_decay: 3e-3
+
+  val_idx: 1  # -1: validate only once training has finished; n: validate every n epochs.
+  final_test: True  # Set to true to evaluate performance on test-set.
+
+
+hydra:
+  run:
+    dir: logs
